@@ -17,6 +17,9 @@ module.exports = (sequelize, DataTypes) => {
 					foreignKey: 'shippingStatus'
 				}
 			);
+            shipping_orders.belongsTo(models.Deliveries, {
+                foreignKey: "deliveryData"
+            })
 		}
 	};
 	shipping_orders.init({
@@ -38,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         shippingStatus: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         productDetail: {
@@ -46,7 +49,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         deliveryData: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: false
         }
 	}, {

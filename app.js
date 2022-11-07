@@ -3,6 +3,7 @@ const app = new express()
 //const mysql = require("mysql2")
 const cors = require("cors")
 const ordenes_envio = require("./routes/ordenes_envio")
+const deliveries = require("./routes/deliveries")
 const Sequelize = require('sequelize');
 const shipping = require("./models/shipping_status")
 
@@ -32,6 +33,7 @@ app.use(cors(corsOptions))
 
 // Declaracion de Rutas
 app.use("/ordenes_envio", ordenes_envio)
+app.use("/repartidores", deliveries)
 
 // CONFIGURACION DE ENTORNO
 const port = process.env.PORT || 3000 //Toma el valor de la var de entorno o 3000
