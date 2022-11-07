@@ -1,4 +1,4 @@
-const Joi = require("@hapi/joi")
+const Joi = require("joi")
 const messages = require("./spanish-joi-messages.json")
 
 module.exports = Object.freeze({
@@ -6,9 +6,9 @@ module.exports = Object.freeze({
     ORDER_SCHEMA : Joi.object({
         originAddress: Joi.string().min(3).max(100).required()
             .label("Dirección Origen").messages(messages), 
-        destinyAddress: Joi.number().required()
+        destinyAddress: Joi.string().min(3).max(100).required()
             .label("Dirección Destino").messages(messages),
-        buyerContact: Joi.string().max(280).optional().allow(null, "")
+        buyerContact: Joi.string().min(3).max(100).required()
             .label("Contacto Comprador").messages(messages),
         shippingStatus: Joi.string().required()
             .label("Estado del Envio").messages(messages),

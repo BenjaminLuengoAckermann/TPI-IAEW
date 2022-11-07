@@ -3,7 +3,12 @@ const app = new express()
 //const mysql = require("mysql2")
 const cors = require("cors")
 const ordenes_envio = require("./routes/ordenes_envio")
+const Sequelize = require('sequelize');
+const shipping = require("./models/shipping_status")
 
+
+
+//shipping.crearTabla(sequelize)
 
 // Establecemos la conexion a la base de datos mediante el archivo db.js 
 /*db.connect(function(err) {
