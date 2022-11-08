@@ -11,7 +11,7 @@ module.exports = {
 
         const responseShippingStatus = shipping_status.findOne({
             where: {
-                id: req.body.shippingStatus
+                name: "Creado"
             }
         });
 
@@ -43,7 +43,7 @@ module.exports = {
             .catch(error => res.status(400).send(error))
     },
 
-    asignarRepartidor(req, res) {
+    asignar_repartidor(req, res) {
         const availableDeliveries = deliveries.findAll()
 
         const orderResponse = ordenes_envio.findOne({
@@ -64,10 +64,42 @@ module.exports = {
                     return ordenes_envio
                         .update({
                             deliveryData: randomDelivery.id,
+                            shippingStatus: 2
                         },
                             {
                                 where: {
                                     orderId: response[1].dataValues.orderId
+                                }
+                            },
+                        )
+                        .then(delivery => res.status(200).send(delivery))
+                        .catch(error => res.status(400).send(error))
+                }
+                else res.sendStatus(204)
+
+            })
+    },
+
+    notificar_cambio_estado(req, res) {
+
+        const orderResponse = ordenes_envio.findOne({
+            where: {
+                orderId: req.params.orderId
+            }
+        })
+
+        Promise
+            .all([orderResponse])
+            .then(response => {
+                // si existe la orden de envio
+                if (response[0]) {
+                    return ordenes_envio
+                        .update({
+                            shippingStatus: 3
+                        },
+                            {
+                                where: {
+                                    orderId: response[0].dataValues.orderId
                                 }
                             },
                         )

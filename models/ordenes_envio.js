@@ -50,7 +50,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         deliveryData: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: true
         }
 	}, {
 		sequelize,
