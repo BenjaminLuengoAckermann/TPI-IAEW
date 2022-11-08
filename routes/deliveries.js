@@ -7,6 +7,7 @@ const deliveries_controller = require("../controllers/deliveries")
 ruta.get("/", verificar_token, deliveries_controller.findAll)
 ruta.get("/:id", verificar_token, deliveries_controller.findOne)
 ruta.post("/", verificar_token, deliveries_controller.create)
+ruta.put("/:id", verificar_token, deliveries_controller.update)
 ruta.delete("/:id", verificar_token, deliveries_controller.delete)
 
 module.exports = ruta

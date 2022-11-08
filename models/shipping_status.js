@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     shipping_status.init({
         id: {
             type: DataTypes.INTEGER,
-            autoIncrementIdentity: true,
+            autoIncrement: true,
             primaryKey: true
         },
         name: {
@@ -26,7 +26,8 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         sequelize,
         modelName: 'ShippingStatus',
-        tableName: 'shipping_status'
+        tableName: 'shipping_status', 
+        timestamps: false
 
     });
     return shipping_status;

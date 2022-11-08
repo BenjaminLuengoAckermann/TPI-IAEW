@@ -46,6 +46,7 @@ ruta.get("/:orderId", verificar_token, (req, res) => {
 ruta.get("/:orderId", verificar_token, ordenes_envio_controller.find)
 
 ruta.post("/", verificar_token, ordenes_envio_controller.create)
+ruta.post("/:orderId/repartidor", verificar_token, ordenes_envio_controller.asignarRepartidor)
 
 
 // Registrar una Orden de Envio

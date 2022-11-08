@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
 	shipping_orders.init({
         orderId: {
             type: DataTypes.INTEGER,
-            autoIncrementIdentity: true,
+            autoIncrement: true,
             primaryKey: true
         },
         originAddress: {
@@ -55,7 +55,8 @@ module.exports = (sequelize, DataTypes) => {
 	}, {
 		sequelize,
 		modelName: 'ShippingOrders',
-        tableName: 'shipping_orders'
+        tableName: 'shipping_orders', 
+        timestamps: false
 	});
 	return shipping_orders;
 };
