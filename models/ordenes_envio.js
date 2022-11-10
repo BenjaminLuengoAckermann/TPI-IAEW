@@ -51,6 +51,10 @@ module.exports = (sequelize, DataTypes) => {
         deliveryData: {
             type: DataTypes.INTEGER,
             allowNull: true
+        }, 
+        deliveredAt: {
+            type: DataTypes.STRING, 
+            allowNull: true
         }
 	}, {
 		sequelize,

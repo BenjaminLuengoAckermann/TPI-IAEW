@@ -17,7 +17,11 @@ module.exports = {
     },
     findAll(req, res) {
         return deliveries
-            .findAll()
+            .findAll({
+                where: {
+                    isDelivering: false
+                }
+            })
             .then(deliveries => res.status(200).send(deliveries))
             .catch(error => res.status(400).send(error))
     },

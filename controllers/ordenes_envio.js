@@ -25,7 +25,6 @@ module.exports = {
                         destinyAddress: req.body.destinyAddress,
                         buyerContact: req.body.buyerContact,
                         productDetail: req.body.productDetail,
-                        deliveryData: req.body.deliveryData
                     })
                     .then(ordenes => res.status(200).send(ordenes))
                     .catch(error => res.status(400).send(error))
@@ -44,7 +43,11 @@ module.exports = {
     },
 
     asignar_repartidor(req, res) {
-        const availableDeliveries = deliveries.findAll()
+        const availableDeliveries = deliveries.findAll({
+            where: {
+                isDelivering: false
+            }
+        })
 
         const orderResponse = ordenes_envio.findOne({
             where: {
@@ -61,20 +64,36 @@ module.exports = {
                     const randomDelivery = response[0][Math.floor(Math.random() * response[0].length)].dataValues
                     console.log(randomDelivery)
                     console.log(response[1])
-                    return ordenes_envio
-                        .update({
-                            deliveryData: randomDelivery.id,
-                            shippingStatus: 2
-                        },
-                            {
-                                where: {
-                                    orderId: response[1].dataValues.orderId
-                                }
-                            },
-                        )
-                        .then(delivery => res.status(200).send(delivery))
-                        .catch(error => res.status(400).send(error))
+                    const orderId = response[1].dataValues.orderId
+                    const asignarReparto = deliveries.update({
+                        isDelivering: true,
+                    },
+                        {
+                            where: {
+                                id: randomDelivery.id
+                            }
+                        })
+
+                    Promise
+                        .all([asignarReparto])
+                        .then(response => {
+                            return ordenes_envio
+                                .update({
+                                    deliveryData: randomDelivery.id,
+                                    shippingStatus: 2
+                                },
+                                    {
+                                        where: {
+                                            orderId: orderId
+                                        }
+                                    },
+                                )
+                                .then(delivery => res.status(200).send(delivery))
+                                .catch(error => res.status(400).send(error))
+                        })
+
                 }
+
                 else res.sendStatus(204)
 
             })
@@ -84,7 +103,8 @@ module.exports = {
 
         const orderResponse = ordenes_envio.findOne({
             where: {
-                orderId: req.params.orderId
+                orderId: req.params.orderId, 
+                shippingStatus: 2
             }
         })
 
@@ -93,18 +113,34 @@ module.exports = {
             .then(response => {
                 // si existe la orden de envio
                 if (response[0]) {
-                    return ordenes_envio
-                        .update({
-                            shippingStatus: 3
-                        },
-                            {
-                                where: {
-                                    orderId: response[0].dataValues.orderId
-                                }
-                            },
-                        )
-                        .then(delivery => res.status(200).send(delivery))
-                        .catch(error => res.status(400).send(error))
+                    const orderId = response[0].dataValues.orderId
+                    // Desocupamos al repartidor
+                    const desocuparReparto = deliveries.update({
+                        isDelivering: false,
+                    },
+                        {
+                            where: {
+                                id: response[0].dataValues.deliveryData
+                            }
+                        })
+                    Promise
+                        .all([desocuparReparto])
+                        .then(response => {
+                            return ordenes_envio
+                                .update({
+                                    shippingStatus: 3,
+                                    deliveredAt: new Date().toLocaleString()
+                                },
+                                    {
+                                        where: {
+                                            orderId: orderId
+                                        }
+                                    },
+                                )
+                                .then(delivery => res.status(200).send(delivery))
+                                .catch(error => res.status(400).send(error))
+                        })
+
                 }
                 else res.sendStatus(204)
 

@@ -22,6 +22,10 @@ module.exports = (sequelize, DataTypes) => {
         fullname: {
             type: DataTypes.STRING,
             allowNull: false
+        }, 
+        isDelivering: {
+            type: DataTypes.BOOLEAN, 
+            defaultValue: false
         }
     }, {
         sequelize,
