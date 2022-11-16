@@ -17,12 +17,16 @@ if (config.use_env_variable) {
 }*/
 // Option 1: Passing a connection URI
  sequelize = new Sequelize(
-    'IAEW2022',
-    'root',
-    '123',
+    'iaew2022',
+    'admin',
+    'Test123456',
      {
-       host: '127.0.0.1',
-       dialect: 'mysql'
+       host: 'iaew.c3shje36eonx.us-east-1.rds.amazonaws.com',
+	   port: 3306,
+       dialect: 'mysql', 
+	   dialectOptions: {
+		ssl: "Amazon RDS"
+	   }
      })
   
   /*sequelize.authenticate().then(() => {
