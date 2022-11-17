@@ -79,9 +79,3 @@ Outputs:
     Value: !Ref ContainerSecurityGroup
     Export:
       Name: 'ContainerSecurityGroup'
-
-  LoadBalancerDNS:
-    Description: Domain name for the loadbalancer
-    Value: !GetAtt LoadBalancer.DNSName
-    Export:
-      Name: 'DomainName'
