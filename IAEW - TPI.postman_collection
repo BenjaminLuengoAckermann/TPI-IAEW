@@ -1,0 +1,379 @@
+{
+	"info": {
+		"_postman_id": "c4454386-77c1-4372-8883-2fc45dbbc2c0",
+		"name": "IAEW Luengo Ackermann - 79120",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19699224"
+	},
+	"item": [
+		{
+			"name": "TPI",
+			"item": [
+				{
+					"name": "Deliveries",
+					"item": [
+						{
+							"name": "Consultar Repartidores",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_iaew}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/repartidores",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"repartidores"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Consultar Repartidores AWS",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImRDUG1HcFFKRmxMbkxfMVhxVzl4RyJ9.eyJpc3MiOiJodHRwczovL2Rldi02aXVsZGp4MC51cy5hdXRoMC5jb20vIiwic3ViIjoiRXdyUjdmQXZ3eWdoVEpPVlNzeDRJNmZ0cnpiYWhucENAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vb3BlcmFkb3ItbG9naWNvLmNvbSIsImlhdCI6MTY2ODcwNzYwMCwiZXhwIjoxNjY4Nzk0MDAwLCJhenAiOiJFd3JSN2ZBdnd5Z2hUSk9WU3N4NEk2ZnRyemJhaG5wQyIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.H7U5J6MPFvHQIZwE9uc6SHm1qjz8wXHMKdrw9w9ag5Js7dF9HvcuzXP0_6AJb-A0qruXsUMeiY9pCZqztE7uR_zf3JWZw7u1WlSqO0NvnrkBAsQn-RRKpcgy1Bvgu7jLmAEPGdMsR-jOPP5RkZueZBHkVXBrIIic89720o1IHOL0pdarZj41iboKHtpNO08f3E9DAlWFMVPpZik4sKWOs-LOhefHC7edkDdUV5sfQnIOTXr-xN0JvBxhY7RmGMWy44euD3QBYFdu-P__8BhWraRtBWSdQBmwJKnzAwIADTJ2qwpnOUdqF7805kNY6VdhV6see2D3XBvP960R-4xW-A",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://ecs-services-721857597.us-east-1.elb.amazonaws.com/repartidores",
+									"protocol": "http",
+									"host": [
+										"ecs-services-721857597",
+										"us-east-1",
+										"elb",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"repartidores"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Consultar Repartidores por ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/repartidores/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"repartidores",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Alta Repartidor",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fullname\": \"Ruben Anibal Romero\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/repartidores",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"repartidores"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modificar Repartidor",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/repartidores/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"repartidores",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar Repartidor",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/repartidores/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"repartidores",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Ordenes de Envio",
+					"item": [
+						{
+							"name": "Consultar ordenes de envio",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_iaew}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:3000/ordenes_envio/25",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"ordenes_envio",
+										"25"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Alta orden de envio",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_iaew}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 25,\r\n    \"direccionOrigen\": [\r\n        \"Colon 200\", \r\n        \"Carlos Paz\", \r\n        \"Cordoba\"\r\n    ], \r\n    \"direccionDestino\": [\r\n        \"Independencia 25\",\r\n        \"Cosquin\", \r\n        \"Cordoba\"\r\n    ], \r\n    \"contactoComprador\": \"amogus@gmail.com\",\r\n    \"detalleProducto\": \"Televisor FULLHD Samsung\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/ordenes_envio/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"ordenes_envio",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Asignar repartidor disponible",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_iaew}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/ordenes_envio/25/repartidor",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"ordenes_envio",
+										"25",
+										"repartidor"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Registrar entrega",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_iaew}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/ordenes_envio/25/entrega",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"ordenes_envio",
+										"25",
+										"entrega"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Get Token",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json"
+									},
+									{
+										"key": "Cookie",
+										"value": "did=s%3Av0%3Afbbdadf0-24c6-11ed-8c2d-2d4b20d9d265.9jimT8cpO2z0LWSBtv2jjr2hgPxBOtFjn6%2FYNPQFEsY; did_compat=s%3Av0%3Afbbdadf0-24c6-11ed-8c2d-2d4b20d9d265.9jimT8cpO2z0LWSBtv2jjr2hgPxBOtFjn6%2FYNPQFEsY"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"client_id\":\"EwrR7fAvwyghTJOVSsx4I6ftrzbahnpC\",\"client_secret\":\"C27sQI1CL6vKD5hTQ39dqo6JXIZBLJ6QXou90wqOHfEVRPVFqGwfpyyrSvt2Y0oR\",\"audience\":\"https://operador-logico.com\",\"grant_type\":\"client_credentials\"}"
+								},
+								"url": {
+									"raw": "https://dev-6iuldjx0.us.auth0.com/oauth/token",
+									"protocol": "https",
+									"host": [
+										"dev-6iuldjx0",
+										"us",
+										"auth0",
+										"com"
+									],
+									"path": [
+										"oauth",
+										"token"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token_iaew",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImRDUG1HcFFKRmxMbkxfMVhxVzl4RyJ9.eyJpc3MiOiJodHRwczovL2Rldi02aXVsZGp4MC51cy5hdXRoMC5jb20vIiwic3ViIjoiRXdyUjdmQXZ3eWdoVEpPVlNzeDRJNmZ0cnpiYWhucENAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vb3BlcmFkb3ItbG9naWNvLmNvbSIsImlhdCI6MTY2ODcwNzYwMCwiZXhwIjoxNjY4Nzk0MDAwLCJhenAiOiJFd3JSN2ZBdnd5Z2hUSk9WU3N4NEk2ZnRyemJhaG5wQyIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.H7U5J6MPFvHQIZwE9uc6SHm1qjz8wXHMKdrw9w9ag5Js7dF9HvcuzXP0_6AJb-A0qruXsUMeiY9pCZqztE7uR_zf3JWZw7u1WlSqO0NvnrkBAsQn-RRKpcgy1Bvgu7jLmAEPGdMsR-jOPP5RkZueZBHkVXBrIIic89720o1IHOL0pdarZj41iboKHtpNO08f3E9DAlWFMVPpZik4sKWOs-LOhefHC7edkDdUV5sfQnIOTXr-xN0JvBxhY7RmGMWy44euD3QBYFdu-P__8BhWraRtBWSdQBmwJKnzAwIADTJ2qwpnOUdqF7805kNY6VdhV6see2D3XBvP960R-4xW-A",
+			"type": "string"
+		}
+	]
+}
