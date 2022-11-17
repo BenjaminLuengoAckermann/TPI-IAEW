@@ -7,7 +7,6 @@ const deliveries = require('../models').Deliveries;
 module.exports = {
 
     create(req, res) {
-
         return deliveries
             .create({
                 fullname: req.body.fullname
@@ -15,6 +14,7 @@ module.exports = {
             .then(delivery => res.status(200).send(delivery))
             .catch(error => res.status(400).send(error))
     },
+
     findAll(req, res) {
         return deliveries
             .findAll({
@@ -36,6 +36,7 @@ module.exports = {
             .then(deliveries => res.status(200).send(deliveries))
             .catch(error => res.status(400).send(error))
     },
+
     update(req, res) {
         const responseDeliveries = deliveries.findOne({
             where: {
@@ -66,6 +67,7 @@ module.exports = {
                 else return res.sendStatus(204)
             })
     },
+    
     delete(req, res) {
         const responseDeliveries = deliveries.findOne({
             where: {

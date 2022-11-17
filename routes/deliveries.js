@@ -4,6 +4,7 @@ const verificar_token = require("../middlewares/auth")
 const validators = require("../validators/ordenes_envio")
 const deliveries_controller = require("../controllers/deliveries")
 
+//GET/POST/DELETE /repartidores. ABM Repartidores.
 ruta.get("/", verificar_token, deliveries_controller.findAll)
 ruta.get("/:id", verificar_token, deliveries_controller.findOne)
 ruta.post("/", verificar_token, deliveries_controller.create)
